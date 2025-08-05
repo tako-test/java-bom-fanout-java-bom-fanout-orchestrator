@@ -1,0 +1,26 @@
+version: 0.1.0
+artifacts:
+    default:
+        path: .
+        ecosystem: generic
+workflows:
+    default:
+        steps:
+            - run: echo 'default workflow'
+subscriptions:
+    - artifact: tako-test/java-bom-fanout-java-bom-fanout-core-lib:default
+      events:
+        - updated
+      workflow: default
+    - artifact: tako-test/java-bom-fanout-java-bom-fanout-lib-a:default
+      events:
+        - updated
+      workflow: default
+    - artifact: tako-test/java-bom-fanout-java-bom-fanout-lib-b:default
+      events:
+        - updated
+      workflow: default
+    - artifact: tako-test/java-bom-fanout-java-bom-fanout-java-bom:default
+      events:
+        - updated
+      workflow: default
